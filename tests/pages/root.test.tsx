@@ -1,4 +1,8 @@
-import { parsePageQuery, calcTotalPage } from "../../src/pages/index";
+import {
+  parsePageQuery,
+  calcTotalPage,
+  calcStart,
+} from "../../src/pages/index";
 
 describe("parsePageQuery", () => {
   it("page does not exist", () => {
@@ -31,5 +35,12 @@ describe("calcTotalPage", () => {
   it("less than 5", () => {
     const hitNum = 4;
     expect(calcTotalPage(hitNum)).toBe(1);
+  });
+});
+
+describe("calcStart", () => {
+  it("page is null", () => {
+    let page;
+    expect(calcStart(page)).toBe(0);
   });
 });

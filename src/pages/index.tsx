@@ -10,6 +10,10 @@ import { Movie, SearchMoviesResponse } from "../interfaces/index";
 import { callGetApi } from "../utils/http";
 import config from "../utils/config";
 
+const calcStart = (page?: number): number => {
+  return page ? (page - 1) * 5 : 0;
+};
+
 const fetchSearchResult = async (
   searchTerm: string,
   page?: number
@@ -17,7 +21,7 @@ const fetchSearchResult = async (
   const url = config.apiEndpoint + "/v1/movie/search";
   const query = {
     query: searchTerm,
-    start: page ? (page - 1) * 5 : 0,
+    start: calcStart(page),
     rows: 5,
   };
 
