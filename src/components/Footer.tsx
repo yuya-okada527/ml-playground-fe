@@ -7,7 +7,7 @@ import {
 } from "@material-ui/core";
 import React from "react";
 
-const MAIL_ADDRESS = "yuya.okada527@gmail.com";
+const MAIL_ADDRESS = "xxx";
 const GITHUB_URL = "https://github.com/yuya-okada527/ml-playground";
 
 const useStyles = makeStyles((theme: Theme) =>
