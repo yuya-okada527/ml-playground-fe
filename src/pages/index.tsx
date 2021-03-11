@@ -25,7 +25,7 @@ const fetchSearchResult = async (
   return response;
 };
 
-const parsePageQuery = (query: ParsedUrlQuery) => {
+const parsePageQuery = (query: ParsedUrlQuery): number => {
   const pageStr = Array.isArray(query.page) ? query.page[0] : query.page;
   // 指定なしの場合、1
   if (!pageStr) {
@@ -35,7 +35,7 @@ const parsePageQuery = (query: ParsedUrlQuery) => {
   return Number(pageStr);
 };
 
-const calcTotalPage = (hitNum: number) => {
+const calcTotalPage = (hitNum: number): number => {
   if (hitNum % 5 == 0) {
     return Math.floor(hitNum / 5);
   }
@@ -115,3 +115,4 @@ const IndexPage: React.FC = () => {
 };
 
 export default IndexPage;
+export { parsePageQuery, calcTotalPage };
