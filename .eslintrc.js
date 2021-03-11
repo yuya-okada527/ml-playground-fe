@@ -28,6 +28,9 @@ module.exports = {
       node: {
         extensions: [".js", ".jsx", ".ts", ".tsx", ".json"],
       },
+      react: {
+        version: "detect",
+      },
       typescript: {
         config: "tsconfig.json",
         alwaysTryTypes: true,

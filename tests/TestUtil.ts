@@ -1,4 +1,4 @@
-import { Movie } from "src/interfaces";
+import { Movie } from "../src/interfaces";
 
 const emptyMovie = (): Movie => {
   return {
