@@ -4,6 +4,8 @@ import { Grid } from "@material-ui/core";
 import Link from "next/link";
 import Layout from "../components/Layout";
 
+/** Aboutページ
+ */
 const AboutPage: React.FC = () => (
   <Layout title="About This Site">
     <Grid container>
