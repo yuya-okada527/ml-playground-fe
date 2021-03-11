@@ -25,6 +25,7 @@ const fetchSearchResult = async (
   return response;
 };
 
+// TODO テストコード
 const parsePageQuery = (query: ParsedUrlQuery) => {
   const pageStr = Array.isArray(query.page) ? query.page[0] : query.page;
   // 指定なしの場合、1
