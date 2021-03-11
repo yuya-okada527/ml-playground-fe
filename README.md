@@ -2,6 +2,10 @@
 
 ML Playground App 用のコンシューマ向け FE を提供します。
 
+## URL
+
+- 本番: https://ml-playground-fe.vercel.app/
+
 ## 使用技術
 
 - 言語: Typescript

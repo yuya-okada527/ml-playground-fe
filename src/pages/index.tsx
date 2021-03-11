@@ -119,4 +119,4 @@ const IndexPage: React.FC = () => {
 };
 
 export default IndexPage;
-export { parsePageQuery, calcTotalPage };
+export { parsePageQuery, calcTotalPage, calcStart };
