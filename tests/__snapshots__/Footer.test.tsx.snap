@@ -11,7 +11,7 @@ exports[`Footer Snapshot Test 1`] = `
       className="makeStyles-footerListItem-3"
     >
       Contact: 
-      yuya.okada527@gmail.com
+      xxx
     </WithStyles(ForwardRef(ListItem))>
     <WithStyles(ForwardRef(ListItem))
       className="makeStyles-footerListItem-3"
