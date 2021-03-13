@@ -1,4 +1,4 @@
-import { makeQuery } from "../src/utils/http";
+import { makeQuery, isValidValue } from "../src/utils/http";
 
 describe("makeQuery", () => {
   it("1対1のクエリ", () => {
@@ -35,5 +35,27 @@ describe("makeQuery", () => {
 
     // 検証
     expect(makeQuery(queries)).toBe("");
+  });
+
+  it("空文字を含む場合", () => {
+    // テストデータ
+    const queries = {
+      key: ["", "hoge"],
+    };
+
+    // 検証
+    expect(makeQuery(queries)).toBe("key=hoge");
+  });
+});
+
+describe("isValidValue", () => {
+  it("value is null", () => {
+    expect(isValidValue(null)).toBeFalsy();
+  });
+  it("value is undefined", () => {
+    expect(isValidValue(undefined)).toBeFalsy();
+  });
+  it("value is empty", () => {
+    expect(isValidValue("")).toBeFalsy();
   });
 });
