@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 
 import Layout from "../components/Layout";
 import SearchBox from "../components/SearchBox";
+import SearchSuggestion from "../components/SearchSuggestion";
 import SearchResultList from "../components/SearchResultList";
 import { Movie, SearchMoviesResponse } from "../interfaces/index";
 import { callGetApi } from "../utils/http";
@@ -106,7 +107,7 @@ const IndexPage: React.FC = () => {
             handleSearchTermChange={handleSearchTermChange}
             handleSearchButtonClick={handleSearchButtonClick}
           />
-          {searchResult.length > 0 && (
+          {searchResult.length > 0 ? (
             <SearchResultList
               movies={searchResult}
               searchedTerm={searchedTerm}
@@ -114,6 +115,8 @@ const IndexPage: React.FC = () => {
               pageCount={totalPage}
               handlePageChange={handlePageChange}
             />
+          ) : (
+            <SearchSuggestion />
           )}
         </Grid>
       </Grid>

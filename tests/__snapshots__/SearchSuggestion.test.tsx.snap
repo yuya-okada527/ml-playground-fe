@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[` 1`] = `
+<WithStyles(ForwardRef(Alert))
+  className="makeStyles-alert-1"
+  severity="info"
+>
+  <WithStyles(ForwardRef(AlertTitle))>
+    お気に入りの映画を探してみてください。
+  </WithStyles(ForwardRef(AlertTitle))>
+  あなたが好きな映画をもとに、おすすめの映画を紹介します。
+</WithStyles(ForwardRef(Alert))>
+`;
+
+exports[`SearchSuggestion Snapshot Test 1`] = `
+<WithStyles(ForwardRef(Alert))
+  className="makeStyles-alert-1"
+  severity="info"
+>
+  <WithStyles(ForwardRef(AlertTitle))>
+    お気に入りの映画を探してみてください。
+  </WithStyles(ForwardRef(AlertTitle))>
+  あなたが好きな映画をもとに、おすすめの映画を紹介します。
+</WithStyles(ForwardRef(Alert))>
+`;
