@@ -17,6 +17,7 @@ exports[`MetaData Snapshot Test 1`] = `
     name="theme-color"
   />
   <meta
+    content="description"
     name="description"
   />
   <link

@@ -4,7 +4,9 @@ import MetaData from "../src/components/MetaData";
 
 describe("MetaData", () => {
   it("Snapshot Test", () => {
-    const metaData = shallow(<MetaData title={"title"} />);
+    const metaData = shallow(
+      <MetaData title={"title"} description={"description"} />
+    );
     expect(metaData).toMatchSnapshot();
   });
 });
