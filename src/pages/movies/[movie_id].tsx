@@ -9,6 +9,10 @@ import { Movie, SimilarMoviesResponse } from "../../interfaces";
 import config from "../../utils/config";
 import { callGetApi } from "../../utils/http";
 
+// export const getStaticPaths = async () => {
+
+// }
+
 const DetailPage: React.FC = () => {
   const router = useRouter();
   const [movieId, setMovieId] = React.useState("");
