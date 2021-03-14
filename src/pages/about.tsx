@@ -8,7 +8,7 @@ import Layout from "../components/Layout";
  * Aboutページをレンダリングします。
  */
 const AboutPage: React.FC = () => (
-  <Layout title="About This Site">
+  <Layout title="About Site">
     <Grid container>
       <Grid item xs={8}>
         <h1>このサイトについて</h1>
