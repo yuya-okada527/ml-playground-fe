@@ -16,6 +16,7 @@ const useStyles = makeStyles((theme: Theme) =>
 type LayoutProps = {
   children?: ReactNode;
   title?: string;
+  description?: string;
 };
 
 /**
@@ -25,12 +26,13 @@ type LayoutProps = {
 const Layout: React.FC<LayoutProps> = ({
   children,
   title = "This is the default title",
+  description = "This is the default description",
 }) => {
   const classes = useStyles();
   return (
     <>
       {/* ヘッダー要素 */}
-      <MetaData title={title} />
+      <MetaData title={title} description={description} />
       <Header />
       <div className={classes.offset} />
 

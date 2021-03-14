@@ -4,6 +4,7 @@ import theme from "../utils/theme";
 
 type MetaDataProps = {
   title: string;
+  description: string;
 };
 
 /**
@@ -11,12 +12,13 @@ type MetaDataProps = {
  *
  * @param title タイトル
  */
-const MetaData: React.FC<MetaDataProps> = ({ title }) => (
+const MetaData: React.FC<MetaDataProps> = ({ title, description }) => (
   <Head>
     <title>{title}</title>
     <meta charSet="utf-8" />
     <meta name="viewport" content="initial-scale=1.0, width=device-width" />
     <meta name="theme-color" content={theme.palette.primary.main} />
+    <meta name="description" content={description} />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"

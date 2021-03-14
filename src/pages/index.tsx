@@ -95,7 +95,10 @@ const IndexPage: React.FC = () => {
     }
   }, []);
   return (
-    <Layout title="ML Playground">
+    <Layout
+      title="ML Playground"
+      description="機械学習を利用するデモ環境を提供するアプリ。"
+    >
       <Grid container>
         <Grid item xs={8}>
           <SearchBox

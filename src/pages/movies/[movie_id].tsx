@@ -62,7 +62,10 @@ const DetailPage: React.FC = () => {
     initSimilarMovies();
   }, [movieId]);
   return (
-    <Layout title={`Movie Recommend ${movieId}`}>
+    <Layout
+      title={`Movie Recommend ${movieId}`}
+      description="映画の詳細情報を表示します。"
+    >
       <Grid container>
         <Grid item xs={8}>
           <SearchBox
