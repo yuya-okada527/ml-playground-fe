@@ -1,32 +1,54 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-// TODO 暫定対応
-import { Grid } from "@material-ui/core";
+import {
+  Grid,
+  Typography,
+  Link as MaterialLink,
+  makeStyles,
+  Theme,
+  createStyles,
+} from "@material-ui/core";
 import Link from "next/link";
 import Layout from "../components/Layout";
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    title: {
+      marginTop: theme.spacing(2),
+      marginBottom: theme.spacing(2),
+    },
+    subText: {
+      marginBottom: theme.spacing(2),
+    },
+    link: {
+      cursor: "pointer",
+    },
+  })
+);
 
 /**
  * Aboutページをレンダリングします。
  */
-const AboutPage: React.FC = () => (
-  <Layout title="About Site" description="サイトの説明">
-    <Grid container>
-      <Grid item xs={8}>
-        <h1>このサイトについて</h1>
-        <p>
-          このサイトは、機械学習を活用したアプリケーションのデモンストレーション環境を提供します。
-        </p>
-        <p>
-          収益化を主目標としていませんが、機械学習を活用したサービスを実環境で継続的に運用・改善していくためことを前提に設計・開発しています。
-        </p>
-        <p>現在、提供している機能は以下です。</p>
-        <p>
+const AboutPage: React.FC = () => {
+  const classes = useStyles();
+  return (
+    <Layout title="About Site" description="サイトの説明">
+      <Grid container>
+        <Grid item xs={8}>
+          <Typography variant="h5" component="h1" className={classes.title}>
+            このサイトについて
+          </Typography>
+          <Typography variant="body1" className={classes.subText}>
+            このサイトは、機械学習を活用したアプリケーションの検証サイトです。
+          </Typography>
+          <Typography variant="body1" className={classes.subText}>
+            現在、以下の機能を提供しています。
+          </Typography>
           <Link href="/">
-            <a>映画推薦</a>
+            <MaterialLink className={classes.link}>映画推薦</MaterialLink>
           </Link>
-        </p>
+        </Grid>
       </Grid>
-    </Grid>
-  </Layout>
-);
+    </Layout>
+  );
+};
 
 export default AboutPage;
