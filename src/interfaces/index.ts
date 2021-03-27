@@ -26,3 +26,7 @@ export type SimilarMoviesResponse = {
   model_type: string;
   results: Movie[];
 };
+
+export type AllMovieIdResponse = {
+  movie_ids: number[];
+};
