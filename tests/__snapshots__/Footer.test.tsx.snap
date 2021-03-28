@@ -10,14 +10,13 @@ exports[`Footer Snapshot Test 1`] = `
     <WithStyles(ForwardRef(ListItem))
       className="makeStyles-footerListItem-3"
     >
-      Contact: 
-      xxx
-    </WithStyles(ForwardRef(ListItem))>
-    <WithStyles(ForwardRef(ListItem))
-      className="makeStyles-footerListItem-3"
-    >
-      Github: 
-      https://github.com/yuya-okada527/ml-playground
+      Github:
+      <WithStyles(ForwardRef(Link))
+        className="makeStyles-githubUrl-4"
+        href="https://github.com/yuya-okada527/ml-playground"
+      >
+        https://github.com/yuya-okada527/ml-playground
+      </WithStyles(ForwardRef(Link))>
     </WithStyles(ForwardRef(ListItem))>
   </WithStyles(ForwardRef(List))>
 </footer>

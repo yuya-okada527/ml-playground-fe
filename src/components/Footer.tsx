@@ -2,19 +2,19 @@ import {
   createStyles,
   List,
   ListItem,
+  Link as MaterialLink,
   makeStyles,
   Theme,
 } from "@material-ui/core";
 import React from "react";
 
-const MAIL_ADDRESS = "xxx";
 const GITHUB_URL = "https://github.com/yuya-okada527/ml-playground";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     footer: {
       width: "100%",
-      height: "65px",
+      height: "25px",
       borderTop: "1px solid black",
       marginTop: theme.spacing(2),
     },
@@ -24,6 +24,9 @@ const useStyles = makeStyles((theme: Theme) =>
     footerListItem: {
       paddingTop: theme.spacing(0.5),
       paddingBottom: theme.spacing(0),
+    },
+    githubUrl: {
+      paddingLeft: theme.spacing(1),
     },
   })
 );
@@ -37,10 +40,10 @@ const Footer: React.FC = () => {
     <footer className={classes.footer}>
       <List className={classes.footerList}>
         <ListItem className={classes.footerListItem}>
-          Contact: {MAIL_ADDRESS}
-        </ListItem>
-        <ListItem className={classes.footerListItem}>
-          Github: {GITHUB_URL}
+          Github:
+          <MaterialLink href={GITHUB_URL} className={classes.githubUrl}>
+            {GITHUB_URL}
+          </MaterialLink>
         </ListItem>
       </List>
     </footer>

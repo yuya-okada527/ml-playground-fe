@@ -15,7 +15,7 @@ import React from "react";
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      height: "calc(100vh - 170px)",
+      height: "calc(100vh - 150px)",
     },
     sideBarItem: {
       color: theme.palette.primary.main,
