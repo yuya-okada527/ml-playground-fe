@@ -1,5 +1,12 @@
 type QueriesType = {
-  [key: string]: string | boolean | number | string[] | boolean[] | number[];
+  [key: string]:
+    | string
+    | boolean
+    | number
+    | string[]
+    | boolean[]
+    | number[]
+    | undefined;
 };
 
 /**
