@@ -23,7 +23,7 @@ const fetchMovieData = async (movieId: string): Promise<Movie> => {
 const fetchSimilarMovies = async (movieId: string): Promise<Movie[]> => {
   const url = config.apiEndpoint + `/v1/movie/similar/${movieId}`;
   const query = {
-    model_type: "tmdb-sim",
+    model_type: config.similarityModel,
   };
   const response = await callGetApi<SimilarMoviesResponse>(url, query);
   return response.results;
