@@ -31,6 +31,7 @@ type SearchResultProps = {
   searchedTerm: string;
   page: number;
   pageCount: number;
+  simModel: string;
   handlePageChange: (event: React.ChangeEvent<unknown>, page: number) => void;
 };
 
@@ -42,6 +43,7 @@ const SearchResultList: React.FC<SearchResultProps> = ({
   searchedTerm,
   page,
   pageCount,
+  simModel,
   handlePageChange,
 }) => {
   const classes = useStyles();
@@ -53,7 +55,11 @@ const SearchResultList: React.FC<SearchResultProps> = ({
       </Typography>
       <List data-test="search-result-list">
         {movies.map((movie: Movie) => (
-          <SearchResultItem key={movie.movie_id} movie={movie} />
+          <SearchResultItem
+            key={movie.movie_id}
+            movie={movie}
+            simModel={simModel}
+          />
         ))}
       </List>
       <SearchResultPagination

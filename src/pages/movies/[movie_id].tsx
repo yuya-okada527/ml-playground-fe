@@ -10,6 +10,7 @@ import {
   Movie,
   SimilarMoviesResponse,
   AllMovieIdResponse,
+  AllSimilarityModelResponse,
 } from "../../interfaces";
 import config from "../../utils/config";
 import { callGetApi } from "../../utils/http";
@@ -20,25 +21,44 @@ const fetchMovieData = async (movieId: string): Promise<Movie> => {
   const response = await callGetApi<Movie>(url, query);
   return response;
 };
-const fetchSimilarMovies = async (movieId: string): Promise<Movie[]> => {
+const fetchSimilarMovies = async (
+  movieId: string,
+  modelType: string
+): Promise<Movie[]> => {
   const url = config.apiEndpoint + `/v1/movie/similar/${movieId}`;
   const query = {
-    model_type: config.similarityModel,
+    model_type: modelType,
   };
   const response = await callGetApi<SimilarMoviesResponse>(url, query);
   return response.results;
 };
-
-export const getStaticPaths: GetStaticPaths = async () => {
+const fetchAllMovieId = async (): Promise<AllMovieIdResponse> => {
   // 公開中の映画IDを全て取得
   const url = config.apiEndpoint + "/v1/movie/search/id/all";
   const query = {};
-  const res = await callGetApi<AllMovieIdResponse>(url, query);
+  return await callGetApi<AllMovieIdResponse>(url, query);
+};
+const fetchAllModels = async (): Promise<AllSimilarityModelResponse> => {
+  const url = config.apiEndpoint + "/v1/movie/similar/model/all";
+  const query = {};
+  return await callGetApi<AllSimilarityModelResponse>(url, query);
+};
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  // 公開中の映画IDを全て取得
+  const allIdRes = await fetchAllMovieId();
+  // 類似映画判定モデルを全て取得
+  const allModelRes = await fetchAllModels();
 
   // 動的パス用のパラメータを作成
-  const paths = res.movie_ids.map((movie_id) => ({
-    params: { movie_id: movie_id.toString() },
-  }));
+  const paths: { params: { movie_id: string } }[] = [];
+  allModelRes.model_types.forEach((model_type) => {
+    allIdRes.movie_ids.forEach((movie_id) => {
+      paths.push({
+        params: { movie_id: `${movie_id.toString()}_${model_type}` },
+      });
+    });
+  });
 
   return { paths, fallback: false };
 };
@@ -48,23 +68,33 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   if (!params) {
     return { props: {} };
   }
-  const movieId = Array.isArray(params.movie_id)
+  const data = Array.isArray(params.movie_id)
     ? params.movie_id[0]
     : params.movie_id;
+  const movieId = data.split("_")[0];
+  const modelType = data.split("_")[1];
+
   // 映画情報を取得
   const movie = await fetchMovieData(movieId);
   // 類似映画情報を取得
-  const similarMovies = await fetchSimilarMovies(movieId);
+  const similarMovies = await fetchSimilarMovies(movieId, modelType);
 
-  return { props: { movie: movie, similarMovies: similarMovies } };
+  return {
+    props: { movie: movie, similarMovies: similarMovies, modelType: modelType },
+  };
 };
 
 type DetailPageProps = {
   movie: Movie;
   similarMovies: Movie[];
+  modelType: string;
 };
 
-const DetailPage: React.FC<DetailPageProps> = ({ movie, similarMovies }) => {
+const DetailPage: React.FC<DetailPageProps> = ({
+  movie,
+  similarMovies,
+  modelType,
+}) => {
   const router = useRouter();
   const [searchTerm, setSearchTerm] = React.useState("");
   const handleSearchTermChange = (
@@ -98,6 +128,7 @@ const DetailPage: React.FC<DetailPageProps> = ({ movie, similarMovies }) => {
           <SimilarMovies
             similarMovies={similarMovies}
             movieTitle={movie ? movie.japanese_title : ""}
+            modelType={modelType}
           />
         </Grid>
       </Grid>

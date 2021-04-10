@@ -7,7 +7,11 @@ import Layout from "../components/Layout";
 import SearchBox from "../components/SearchBox";
 import SearchSuggestion from "../components/SearchSuggestion";
 import SearchResultList from "../components/SearchResultList";
-import { Movie, SearchMoviesResponse } from "../interfaces/index";
+import {
+  BestSimilarityModelResponse,
+  Movie,
+  SearchMoviesResponse,
+} from "../interfaces/index";
 import { callGetApi } from "../utils/http";
 import config from "../utils/config";
 
@@ -63,6 +67,7 @@ const IndexPage: React.FC = () => {
   const [searchResult, setSearchResult] = React.useState<Array<Movie>>([]);
   const [page, setPage] = React.useState<number>(parsePageQuery(router.query));
   const [totalPage, setTotalPage] = React.useState<number>(0);
+  const [simModel, setSimModel] = React.useState<string>("");
 
   const handleSearchTermChange = (
     event: ChangeEvent<HTMLInputElement>
@@ -82,6 +87,13 @@ const IndexPage: React.FC = () => {
     [searchTerm, page]
   );
 
+  const initSimModel = React.useCallback(async () => {
+    const url = config.apiEndpoint + "/v1/movie/similar/model/best";
+    const query = {};
+    const response = await callGetApi<BestSimilarityModelResponse>(url, query);
+    setSimModel(response.best_model);
+  }, []);
+
   const handlePageChange = (
     _event: React.ChangeEvent<unknown>,
     page: number
@@ -94,6 +106,7 @@ const IndexPage: React.FC = () => {
     if (searchTerm !== undefined) {
       handleSearchButtonClick(undefined);
     }
+    initSimModel();
   }, []);
   return (
     <Layout
@@ -114,6 +127,7 @@ const IndexPage: React.FC = () => {
               page={page}
               pageCount={totalPage}
               handlePageChange={handlePageChange}
+              simModel={simModel}
             />
           ) : (
             <SearchSuggestion />

@@ -42,15 +42,19 @@ const useStyles = makeStyles((theme: Theme) =>
 
 type SimilarMovieItemProps = {
   movie: Movie;
+  modelType: string;
 };
 
 /**
  * 類似映画アイテムを描画する
  */
-const SimilarMovieItem: React.FC<SimilarMovieItemProps> = ({ movie }) => {
+const SimilarMovieItem: React.FC<SimilarMovieItemProps> = ({
+  movie,
+  modelType,
+}) => {
   const classes = useStyles();
   return (
-    <Link href={`/movies/${movie.movie_id}`} key={movie.movie_id}>
+    <Link href={`/movies/${movie.movie_id}_${modelType}`} key={movie.movie_id}>
       <a className={classes.link}>
         <ListItem className={classes.similarMovieItem} key={movie.movie_id}>
           <Paper

@@ -41,15 +41,19 @@ const useStyles = makeStyles((theme: Theme) =>
 
 type SearchResultItemProps = {
   movie: Movie;
+  simModel: string;
 };
 
 /**
  * 検索結果を描画する
  */
-const SearchResultItem: React.FC<SearchResultItemProps> = ({ movie }) => {
+const SearchResultItem: React.FC<SearchResultItemProps> = ({
+  movie,
+  simModel,
+}) => {
   const classes = useStyles();
   return (
-    <Link href={`/movies/${movie.movie_id}`}>
+    <Link href={`/movies/${movie.movie_id}_${simModel}`}>
       <a className={classes.link}>
         <ListItem className={classes.searchResultItem} key={movie.movie_id}>
           <Paper
