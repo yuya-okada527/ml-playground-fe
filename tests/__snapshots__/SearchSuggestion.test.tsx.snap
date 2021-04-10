@@ -6,8 +6,21 @@ exports[`SearchSuggestion Snapshot Test 1`] = `
   severity="info"
 >
   <WithStyles(ForwardRef(AlertTitle))>
-    お気に入りの映画を探してみてください。
+    <WithStyles(ForwardRef(Typography))
+      variant="subtitle1"
+    >
+      お気に入りの映画を探してみてください。
+    </WithStyles(ForwardRef(Typography))>
   </WithStyles(ForwardRef(AlertTitle))>
-  あなたが好きな映画をもとに、おすすめの映画を紹介します。
+  <WithStyles(ForwardRef(Typography))
+    variant="body2"
+  >
+    あなたが好きな映画をもとに、おすすめの映画を紹介します。
+  </WithStyles(ForwardRef(Typography))>
+  <WithStyles(ForwardRef(Typography))
+    variant="body2"
+  >
+    おすすめ映画が気に入りましたら、いいねボタンのご協力お願いします。
+  </WithStyles(ForwardRef(Typography))>
 </WithStyles(ForwardRef(Alert))>
 `;
