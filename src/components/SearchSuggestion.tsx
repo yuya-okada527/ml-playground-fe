@@ -1,6 +1,6 @@
 import React from "react";
 import { Alert, AlertTitle } from "@material-ui/lab";
-import { createStyles, makeStyles, Theme } from "@material-ui/core";
+import { createStyles, makeStyles, Theme, Typography } from "@material-ui/core";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -18,8 +18,17 @@ const SearchSuggestion: React.FC = () => {
   const classes = useStyles();
   return (
     <Alert severity="info" className={classes.alert}>
-      <AlertTitle>お気に入りの映画を探してみてください。</AlertTitle>
-      あなたが好きな映画をもとに、おすすめの映画を紹介します。
+      <AlertTitle>
+        <Typography variant="subtitle1">
+          お気に入りの映画を探してみてください。
+        </Typography>
+      </AlertTitle>
+      <Typography variant="body2">
+        あなたが好きな映画をもとに、おすすめの映画を紹介します。
+      </Typography>
+      <Typography variant="body2">
+        おすすめ映画が気に入りましたら、いいねボタンのご協力お願いします。
+      </Typography>
     </Alert>
   );
 };
