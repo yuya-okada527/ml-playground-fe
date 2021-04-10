@@ -20,7 +20,7 @@ exports[`SearchSuggestion Snapshot Test 1`] = `
   <WithStyles(ForwardRef(Typography))
     variant="body2"
   >
-    おすすめ映画が気に入りましたら、いいねボタンのご協力お願いします。
+    おすすめ映画が気にいったら、いいねボタンのご協力お願いします。
   </WithStyles(ForwardRef(Typography))>
 </WithStyles(ForwardRef(Alert))>
 `;
