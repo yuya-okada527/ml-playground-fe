@@ -27,7 +27,7 @@ const SearchSuggestion: React.FC = () => {
         あなたが好きな映画をもとに、おすすめの映画を紹介します。
       </Typography>
       <Typography variant="body2">
-        おすすめ映画が気に入りましたら、いいねボタンのご協力お願いします。
+        おすすめ映画が気にいったら、いいねボタンのご協力お願いします。
       </Typography>
     </Alert>
   );
