@@ -36,6 +36,22 @@ async function callGetApi<T>(url: string, queries: QueriesType): Promise<T> {
     });
 }
 
+async function callPostApi<T>(url: string, body: BodyInit): Promise<T> {
+  // リクエスト
+  return await fetch(url, {
+    method: "POST",
+    body: body,
+  })
+    .then(async (response) => {
+      return await response.json();
+    })
+    .catch((err) => {
+      // TODO ログ
+      console.log(err);
+      return;
+    });
+}
+
 /**
  * クエリ文字列を作成する.
  *
@@ -85,4 +101,9 @@ const isValidQueryValue = (value: unknown): boolean => {
   return true;
 };
 
-export { callGetApi, makeQuery, isValidQueryValue as isValidValue };
+export {
+  callGetApi,
+  callPostApi,
+  makeQuery,
+  isValidQueryValue as isValidValue,
+};
