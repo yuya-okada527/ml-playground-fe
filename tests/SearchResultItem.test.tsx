@@ -11,7 +11,10 @@ describe("SearchResultItem", () => {
     movie.japanese_title = "タイトル";
     movie.poster_url = "http://movie.co.jp/image.png";
     movie.release_year = 2000;
-    const searchResultItem = shallow(<SearchResultItem movie={movie} />);
+    const simModel = "tmdb-sim";
+    const searchResultItem = shallow(
+      <SearchResultItem movie={movie} simModel={simModel} />
+    );
 
     // 検証
     expect(searchResultItem).toMatchSnapshot();

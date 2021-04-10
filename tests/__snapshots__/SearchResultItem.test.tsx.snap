@@ -2,7 +2,7 @@
 
 exports[`SearchResultItem Snapshot Test 1`] = `
 <Link
-  href="/movies/0"
+  href="/movies/0_tmdb-sim"
 >
   <a
     className="makeStyles-link-2"

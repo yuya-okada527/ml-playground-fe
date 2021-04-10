@@ -6,7 +6,10 @@ import { emptyMovie } from "./TestUtil";
 describe("SimilarMovieItem", () => {
   it("Snapshot Test", () => {
     const movie = emptyMovie();
-    const similarMovieItem = shallow(<SimilarMovieItem movie={movie} />);
+    const modelType = "tmdb-sim";
+    const similarMovieItem = shallow(
+      <SimilarMovieItem movie={movie} modelType={modelType} />
+    );
     expect(similarMovieItem).toMatchSnapshot();
   });
 });

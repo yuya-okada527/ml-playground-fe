@@ -2,7 +2,7 @@
 
 exports[`SimilarMovieItem Snapshot Test 1`] = `
 <Link
-  href="/movies/0"
+  href="/movies/0_tmdb-sim"
   key="0"
 >
   <a

@@ -56,6 +56,7 @@ const useStyles = makeStyles((theme: Theme) =>
 type SimilarMoviesProps = {
   similarMovies: Movie[];
   movieTitle: string;
+  modelType: string;
 };
 
 /**
@@ -64,6 +65,7 @@ type SimilarMoviesProps = {
 const SimilarMovies: React.FC<SimilarMoviesProps> = ({
   similarMovies,
   movieTitle,
+  modelType,
 }) => {
   const classes = useStyles();
   return (
@@ -75,7 +77,11 @@ const SimilarMovies: React.FC<SimilarMoviesProps> = ({
       </Paper>
       <List data-test="similar-movie-list">
         {similarMovies.map((movie: Movie) => (
-          <SimilarMovieItem key={movie.movie_id} movie={movie} />
+          <SimilarMovieItem
+            key={movie.movie_id}
+            movie={movie}
+            modelType={modelType}
+          />
         ))}
       </List>
     </Box>

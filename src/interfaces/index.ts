@@ -30,3 +30,11 @@ export type SimilarMoviesResponse = {
 export type AllMovieIdResponse = {
   movie_ids: number[];
 };
+
+export type AllSimilarityModelResponse = {
+  model_types: string[];
+};
+
+export type BestSimilarityModelResponse = {
+  best_model: string;
+};
