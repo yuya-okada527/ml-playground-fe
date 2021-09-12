@@ -28,13 +28,7 @@ async function callGetApi<T>(url: string, queries: QueriesType): Promise<T> {
   })
     .then(async (response) => {
       return await response.json();
-    })
-    .catch((err) => {
-      // TODO ログ
-      console.log(err);
-      return;
-    });
-}
+    })}
 
 async function callPostApi<T>(url: string, body: BodyInit): Promise<T> {
   // リクエスト

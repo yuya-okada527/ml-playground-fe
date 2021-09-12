@@ -30,8 +30,7 @@ const fetchSearchResult = async (
     rows: 5,
   };
 
-  const response = await callGetApi<SearchMoviesResponse>(url, query);
-  return response;
+  return await callGetApi<SearchMoviesResponse>(url, query);
 };
 
 const parsePageQuery = (query: ParsedUrlQuery): number => {
@@ -77,8 +76,14 @@ const IndexPage: React.FC = () => {
 
   const handleSearchButtonClick = React.useCallback(
     async (_event?: React.MouseEvent<unknown>, pageParam?: number) => {
-      const response = await fetchSearchResult(searchTerm, pageParam);
+      const response = await fetchSearchResult(searchTerm, pageParam).catch(() => {
+        alert("システムに一時的な障害が発生しています。時間をおいて、再度ご利用しなおしてください。");
+      });
+      if (!response) return;
       const hitNum: number = response.available_num;
+      if (hitNum === 0) {
+        alert("条件に合う映画をお探しできませんでした。別の条件で、お探しください。");
+      }
       setSearchResult(response.results);
       setSearchedTerm(searchTerm);
       setPage(pageParam ? pageParam : 1);
